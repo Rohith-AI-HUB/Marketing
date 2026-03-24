@@ -8,241 +8,71 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg:            #f4ede0;
-      --bg-raised:     #faf5eb;
-      --bg-input:      #ede5d4;
-      --bg-hover:      #ece3d0;
-      --border:        #d8ccb4;
-      --border-mid:    #c4b49a;
-      --border-strong: #a89070;
-      --text-1: #26201a;
-      --text-2: #6a5c4c;
-      --text-3: #9a8870;
-      --accent:        #8c6428;
-      --accent-dim:    #f0e4cc;
+      --bg: #f4ede0; --bg-raised: #faf5eb; --bg-input: #ede5d4; --bg-hover: #ece3d0;
+      --border: #d8ccb4; --border-mid: #c4b49a; --border-strong: #a89070;
+      --text-1: #26201a; --text-2: #6a5c4c; --text-3: #9a8870; --accent: #8c6428;
       --font-display: 'Fraunces', Georgia, serif;
-      --font-body:    'DM Sans', system-ui, sans-serif;
-      --font-mono:    'DM Mono', 'Courier New', monospace;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --font-mono: 'DM Mono', 'Courier New', monospace;
     }
     html { font-size: 16px; overflow-x: hidden; scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text-1);
-      font-family: var(--font-body);
-      font-size: 14px; line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+    body { background: var(--bg); color: var(--text-1); font-family: var(--font-body); font-size: 14px; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     ::selection { background: rgba(140,100,40,0.18); }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
-
-    /* NAV */
-    .page-header {
-      position: sticky; top: 0; z-index: 30;
-      height: 56px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 28px;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
-    .logo {
-      font-family: var(--font-display);
-      font-size: 17px; font-weight: 400;
-      color: var(--text-1); letter-spacing: -0.01em;
-    }
+    ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
+    .page-header { position: sticky; top: 0; z-index: 30; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; background: var(--bg); border-bottom: 1px solid var(--border); }
+    .logo { font-family: var(--font-display); font-size: 17px; font-weight: 400; color: var(--text-1); letter-spacing: -0.01em; }
     .logo em { font-style: italic; color: var(--accent); }
     .header-right { display: flex; align-items: center; gap: 16px; }
-    .header-meta {
-      font-family: var(--font-mono); font-size: 10px;
-      color: var(--text-3); letter-spacing: 0.06em;
-    }
-    .badge-pill {
-      font-family: var(--font-mono); font-size: 9px;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--accent); border: 1px solid var(--accent);
-      border-radius: 3px; padding: 3px 9px; opacity: 0.85;
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 50vh;
-      display: flex; align-items: center;
-      padding: 64px 28px 52px;
-      border-bottom: 1px solid var(--border);
-    }
+    .header-meta { font-family: var(--font-mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.06em; }
+    .badge-pill { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); border-radius: 3px; padding: 3px 9px; opacity: 0.85; }
+    .hero { min-height: 50vh; display: flex; align-items: center; padding: 64px 28px 52px; border-bottom: 1px solid var(--border); }
     .hero-inner { max-width: 720px; }
-    .hero-kicker {
-      font-family: var(--font-mono); font-size: 9px;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--text-3); margin-bottom: 22px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .hero-kicker::before {
-      content: ''; display: block;
-      width: 24px; height: 1px; background: var(--text-3);
-    }
-    .hero-headline {
-      font-family: var(--font-display);
-      font-size: clamp(38px, 5.5vw, 66px);
-      font-weight: 300; color: var(--text-1);
-      line-height: 1.08; letter-spacing: -0.025em;
-      margin-bottom: 24px;
-    }
+    .hero-kicker { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 22px; display: flex; align-items: center; gap: 10px; }
+    .hero-kicker::before { content: ''; display: block; width: 24px; height: 1px; background: var(--text-3); }
+    .hero-headline { font-family: var(--font-display); font-size: clamp(38px, 5.5vw, 66px); font-weight: 300; color: var(--text-1); line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 24px; }
     .hero-headline em { font-style: italic; font-weight: 300; color: var(--text-2); }
-    .hero-sub {
-      font-size: 15px; color: var(--text-2);
-      max-width: 480px; line-height: 1.7; margin-bottom: 36px;
-    }
-
-    /* EMAIL FORM */
+    .hero-sub { font-size: 15px; color: var(--text-2); max-width: 480px; line-height: 1.7; margin-bottom: 36px; }
     .cta-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-    .email-input {
-      background: var(--bg-input);
-      border: 1px solid var(--border-mid);
-      border-radius: 5px;
-      color: var(--text-1);
-      font-family: var(--font-body); font-size: 13.5px;
-      padding: 10px 14px; outline: none; width: 280px;
-      transition: border-color 0.15s;
-    }
+    .email-input { background: var(--bg-input); border: 1px solid var(--border-mid); border-radius: 5px; color: var(--text-1); font-family: var(--font-body); font-size: 13.5px; padding: 10px 14px; outline: none; width: 280px; transition: border-color 0.15s; }
     .email-input:focus { border-color: var(--border-strong); }
     .email-input::placeholder { color: var(--text-3); }
-    .btn-primary {
-      background: var(--text-1); color: var(--bg);
-      border: none; border-radius: 4px;
-      padding: 10px 22px;
-      font-family: var(--font-body); font-size: 13px; font-weight: 600;
-      cursor: pointer; letter-spacing: 0.01em; white-space: nowrap;
-      transition: opacity 0.15s;
-    }
-    .btn-primary:hover { opacity: 0.82; }
-    .form-note {
-      margin-top: 10px;
-      font-family: var(--font-mono); font-size: 10px;
-      color: var(--text-3); letter-spacing: 0.04em;
-    }
-    .success-msg {
-      display: none; margin-top: 10px;
-      font-family: var(--font-mono); font-size: 11px;
-      color: var(--accent); letter-spacing: 0.04em;
-    }
-
-    /* PROOF STRIP */
-    .proof-strip {
-      display: flex; gap: 40px; flex-wrap: wrap;
-      margin-top: 44px; padding-top: 28px;
-      border-top: 1px solid var(--border);
-    }
-    .proof-num {
-      font-family: var(--font-display);
-      font-size: 28px; font-weight: 300;
-      color: var(--accent); letter-spacing: -0.02em; line-height: 1;
-    }
-    .proof-label {
-      font-family: var(--font-mono); font-size: 9.5px;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--text-3); margin-top: 4px;
-    }
-
-    /* SECTION BASE */
-    .section {
-      max-width: 860px; margin: 0 auto;
-      padding: 64px 28px;
-      border-bottom: 1px solid var(--border);
-    }
-    .section-kicker {
-      font-family: var(--font-mono); font-size: 9px;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--text-3); margin-bottom: 14px;
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(26px, 3.5vw, 40px);
-      font-weight: 300; letter-spacing: -0.02em;
-      line-height: 1.12; margin-bottom: 36px;
-    }
+    .btn-primary { background: var(--text-1); color: var(--bg); border: none; border-radius: 4px; padding: 10px 22px; font-family: var(--font-body); font-size: 13px; font-weight: 600; cursor: pointer; letter-spacing: 0.01em; white-space: nowrap; transition: opacity 0.15s; }
+    .btn-primary:hover { opacity: 0.82; } .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+    .form-note { margin-top: 10px; font-family: var(--font-mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.04em; }
+    .success-msg { display: none; margin-top: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.04em; }
+    .proof-strip { display: flex; gap: 40px; flex-wrap: wrap; margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--border); }
+    .proof-num { font-family: var(--font-display); font-size: 28px; font-weight: 300; color: var(--accent); letter-spacing: -0.02em; line-height: 1; }
+    .proof-label { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-top: 4px; }
+    .section { max-width: 860px; margin: 0 auto; padding: 64px 28px; border-bottom: 1px solid var(--border); }
+    .section-kicker { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 14px; }
+    .section-title { font-family: var(--font-display); font-size: clamp(26px, 3.5vw, 40px); font-weight: 300; letter-spacing: -0.02em; line-height: 1.12; margin-bottom: 36px; }
     .section-title em { font-style: italic; color: var(--text-2); }
-
-    /* STEPS */
-    .steps {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1px; background: var(--border);
-      border: 1px solid var(--border); border-radius: 5px; overflow: hidden;
-    }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 5px; overflow: hidden; }
     .step { background: var(--bg); padding: 24px 22px; transition: background 0.15s; }
     .step:hover { background: var(--bg-hover); }
-    .step-num {
-      font-family: var(--font-mono); font-size: 9px;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 12px;
-    }
-    .step h3 {
-      font-family: var(--font-display); font-weight: 400;
-      font-size: 16px; letter-spacing: -0.01em;
-      margin-bottom: 8px; color: var(--text-1);
-    }
+    .step-num { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .step h3 { font-family: var(--font-display); font-weight: 400; font-size: 16px; letter-spacing: -0.01em; margin-bottom: 8px; color: var(--text-1); }
     .step p { font-size: 12.5px; color: var(--text-3); line-height: 1.65; }
-
-    /* DEMO CARD */
-    .demo-card {
-      background: var(--bg-raised);
-      border: 1px solid var(--border-mid);
-      border-radius: 5px; margin-top: 28px; overflow: hidden;
-    }
-    .demo-header {
-      display: flex; align-items: center; gap: 8px;
-      padding: 11px 16px; border-bottom: 1px solid var(--border);
-      background: var(--bg);
-    }
+    .demo-card { background: var(--bg-raised); border: 1px solid var(--border-mid); border-radius: 5px; margin-top: 28px; overflow: hidden; }
+    .demo-header { display: flex; align-items: center; gap: 8px; padding: 11px 16px; border-bottom: 1px solid var(--border); background: var(--bg); }
     .demo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-mid); }
-    .demo-title {
-      font-family: var(--font-mono); font-size: 9.5px;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--text-3); margin-left: 4px;
-    }
-    .demo-body {
-      padding: 0; display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1px; background: var(--border);
-    }
+    .demo-title { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-left: 4px; }
+    .demo-body { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
     .demo-pane { background: var(--bg-raised); padding: 20px; }
-    .demo-label {
-      font-family: var(--font-mono); font-size: 9px;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--text-3); margin-bottom: 12px;
-    }
+    .demo-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); margin-bottom: 12px; }
     .demo-text { font-family: var(--font-body); font-size: 12.5px; color: var(--text-2); line-height: 1.7; }
-    .demo-text .hl {
-      color: var(--accent); font-family: var(--font-mono);
-      font-size: 11px; display: block; margin-bottom: 8px;
-    }
-    .demo-text .row {
-      display: flex; justify-content: space-between;
-      border-bottom: 1px solid var(--border); padding: 6px 0; font-size: 12px;
-    }
+    .demo-text .hl { color: var(--accent); font-family: var(--font-mono); font-size: 11px; display: block; margin-bottom: 8px; }
+    .demo-text .row { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding: 6px 0; font-size: 12px; }
     .demo-text .row:last-child { border-bottom: none; }
     .demo-text .row span:last-child { color: var(--text-3); font-family: var(--font-mono); font-size: 11px; }
-
-    /* BOTTOM CTA */
-    .bottom-cta {
-      text-align: center; padding: 80px 28px;
-      border-bottom: 1px solid var(--border);
-    }
+    .bottom-cta { text-align: center; padding: 80px 28px; border-bottom: 1px solid var(--border); }
     .bottom-cta .section-title { margin-bottom: 14px; }
     .bottom-cta .hero-sub { margin: 0 auto 32px; }
     .bottom-cta .cta-row { justify-content: center; }
-
-    /* FOOTER */
-    footer {
-      padding: 24px 28px;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 10px;
-    }
+    footer { padding: 24px 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
     .footer-logo { font-family: var(--font-display); font-size: 14px; color: var(--text-3); }
     .footer-logo em { font-style: italic; color: var(--accent); opacity: 0.8; }
     .footer-meta { font-family: var(--font-mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.04em; }
-
     @media (max-width: 600px) {
       .email-input { width: 100%; }
       .cta-row { flex-direction: column; align-items: stretch; }
@@ -252,7 +82,6 @@
     }
   </style>
 </head>
-
 <body>
 
   <header class="page-header">
@@ -266,16 +95,8 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-kicker">Freelance developer tool</div>
-      <h1 class="hero-headline">
-        Paste a brief.<br/>
-        Get a <em>winning proposal</em><br/>
-        in 30 seconds.
-      </h1>
-      <p class="hero-sub">
-        Stop spending two hours writing proposals clients ignore.
-        Paste the client requirement — ProposalIQ returns a structured,
-        ready-to-send proposal instantly.
-      </p>
+      <h1 class="hero-headline">Paste a brief.<br/>Get a <em>winning proposal</em><br/>in 30 seconds.</h1>
+      <p class="hero-sub">Stop spending two hours writing proposals clients ignore. Paste the client requirement — ProposalIQ returns a structured, ready-to-send proposal instantly.</p>
       <div class="cta-row">
         <input class="email-input" type="email" id="heroEmail" placeholder="your@email.com" />
         <button class="btn-primary" onclick="submitEmail('heroEmail','heroSuccess')">Get Early Access →</button>
@@ -283,18 +104,9 @@
       <p class="form-note">Free during beta. No credit card. No spam.</p>
       <p class="success-msg" id="heroSuccess">✓ You're in — we'll be in touch soon.</p>
       <div class="proof-strip">
-        <div class="proof-item">
-          <div class="proof-num">30s</div>
-          <div class="proof-label">Proposal ready</div>
-        </div>
-        <div class="proof-item">
-          <div class="proof-num">2 hrs</div>
-          <div class="proof-label">Saved per client</div>
-        </div>
-        <div class="proof-item">
-          <div class="proof-num">Free</div>
-          <div class="proof-label">During beta</div>
-        </div>
+        <div class="proof-item"><div class="proof-num">30s</div><div class="proof-label">Proposal ready</div></div>
+        <div class="proof-item"><div class="proof-num">2 hrs</div><div class="proof-label">Saved per client</div></div>
+        <div class="proof-item"><div class="proof-num">Free</div><div class="proof-label">During beta</div></div>
       </div>
     </div>
   </section>
@@ -303,21 +115,9 @@
     <p class="section-kicker">// How it works</p>
     <h2 class="section-title">Three steps.<br/><em>Zero fluff.</em></h2>
     <div class="steps">
-      <div class="step">
-        <div class="step-num">01 —</div>
-        <h3>Paste the brief</h3>
-        <p>Drop in whatever the client sent. Email, Slack message, Notion doc — anything works.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">02 —</div>
-        <h3>Review the draft</h3>
-        <p>ProposalIQ structures scope, timeline, and pricing into a professional proposal format.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03 —</div>
-        <h3>Send and win</h3>
-        <p>Edit, copy, send. Clients see a developer who is sharp, fast, and professional.</p>
-      </div>
+      <div class="step"><div class="step-num">01 —</div><h3>Paste the brief</h3><p>Drop in whatever the client sent. Email, Slack message, Notion doc — anything works.</p></div>
+      <div class="step"><div class="step-num">02 —</div><h3>Review the draft</h3><p>ProposalIQ structures scope, timeline, and pricing into a professional proposal format.</p></div>
+      <div class="step"><div class="step-num">03 —</div><h3>Send and win</h3><p>Edit, copy, send. Clients see a developer who is sharp, fast, and professional.</p></div>
     </div>
     <div class="demo-card">
       <div class="demo-header">
@@ -327,10 +127,7 @@
       <div class="demo-body">
         <div class="demo-pane">
           <div class="demo-label">→ Client Brief</div>
-          <div class="demo-text">
-            "We need a dashboard for our logistics team. Real-time tracking, user roles,
-            export to CSV. Budget flexible. Need it in 6 weeks."
-          </div>
+          <div class="demo-text">"We need a dashboard for our logistics team. Real-time tracking, user roles, export to CSV. Budget flexible. Need it in 6 weeks."</div>
         </div>
         <div class="demo-pane">
           <div class="demo-label">← Generated Proposal</div>
@@ -369,48 +166,7 @@
     function submitEmail(inputId, successId) {
       const input = document.getElementById(inputId);
       const email = input.value.trim();
-      if (!email || !email.includes('@')) {
-        input.style.borderColor = '#923434'; input.focus(); return;
-      }
-      input.style.borderColor = '';
-      // TODO: Replace with Formspree endpoint
-      // fetch('https://formspree.io/f/YOUR_ID', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email}) });
-      console.log('Early access email:', email);
-      input.style.display = 'none';
-      input.closest('.cta-row').querySelector('.btn-primary').style.display = 'none';
-      document.getElementById(successId).style.display = 'block';
-    }
-    document.querySelectorAll('.email-input').forEach(el => {
-      el.addEventListener('keydown', e => { if (e.key === 'Enter') el.closest('div').querySelector('.btn-primary').click(); });
-    });
-  </script>
-
-</body>
-</html>
-  <section class="bottom-cta">
-    <p class="section-kicker">// Early access</p>
-    <h2 class="section-title">Stop losing clients<br/><em>to slow proposals.</em></h2>
-    <p class="hero-sub">Join freelance developers getting early access. Free during beta.</p>
-    <div class="cta-row">
-      <input class="email-input" type="email" id="bottomEmail" placeholder="your@email.com" />
-      <button class="btn-primary" onclick="submitEmail('bottomEmail','bottomSuccess')">Claim Early Access →</button>
-    </div>
-    <p class="form-note">No credit card. No spam.</p>
-    <p class="success-msg" id="bottomSuccess">✓ You're in — we'll be in touch soon.</p>
-  </section>
-
-  <footer>
-    <div class="footer-logo">Proposal<em>IQ</em></div>
-    <div class="footer-meta">© 2025 — Built for freelance developers</div>
-  </footer>
-
-  <script>
-    function submitEmail(inputId, successId) {
-      const input = document.getElementById(inputId);
-      const email = input.value.trim();
-      if (!email || !email.includes('@')) {
-        input.style.borderColor = '#923434'; input.focus(); return;
-      }
+      if (!email || !email.includes('@')) { input.style.borderColor = '#923434'; input.focus(); return; }
       input.style.borderColor = '';
       const btn = input.closest('.cta-row').querySelector('.btn-primary');
       btn.textContent = 'Sending...'; btn.disabled = true;
@@ -421,25 +177,14 @@
       })
       .then(res => {
         if (res.ok) {
-          input.style.display = 'none';
-          btn.style.display = 'none';
+          input.style.display = 'none'; btn.style.display = 'none';
           document.getElementById(successId).style.display = 'block';
-        } else {
-          btn.textContent = 'Try again';
-          btn.disabled = false;
-          input.style.borderColor = '#923434';
-        }
+        } else { btn.textContent = 'Try again'; btn.disabled = false; input.style.borderColor = '#923434'; }
       })
-      .catch(() => {
-        btn.textContent = 'Try again';
-        btn.disabled = false;
-        input.style.borderColor = '#923434';
-      });
+      .catch(() => { btn.textContent = 'Try again'; btn.disabled = false; input.style.borderColor = '#923434'; });
     }
     document.querySelectorAll('.email-input').forEach(el => {
-      el.addEventListener('keydown', e => {
-        if (e.key === 'Enter') el.closest('div').querySelector('.btn-primary').click();
-      });
+      el.addEventListener('keydown', e => { if (e.key === 'Enter') el.closest('div').querySelector('.btn-primary').click(); });
     });
   </script>
 
